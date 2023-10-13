@@ -8,6 +8,18 @@
                 <span>{{ __('Dashboard') }}</span>
             </a>
         </li>
+        <li>
+            <a href="jh" class="waves-effect">
+                <i class="mdi mdi-comment-account"></i>
+                <span>{{ __('Feedback Items') }}</span>
+            </a>
+        </li>
+        <li>
+            <a href="jh" class="waves-effect">
+                <i class="fas fa-user"></i>
+                <span>{{ __('Users') }}</span>
+            </a>
+        </li>
  
     </ul>
 </div>
