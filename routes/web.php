@@ -3,6 +3,7 @@
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\VoteController;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Route;
 
@@ -38,4 +39,6 @@ Route::middleware('auth','user-access:user')->group(function () {
     Route::get('/feedbacks/{slug}', [FeedbackController::class,'getfeedback'])->name('feedback');
     Route::post('/comments', [CommentController::class,'store'])->name('comments.store');
     Route::get('/comments/{feedback}', [CommentController::class,'index'])->name('comments.index');
+    Route::post('/feedback/{feedback}/upvote', [VoteController::class,'upvote'])->name('feedback.upvote');
+    Route::post('/feedback/{feedback}/downvote', [VoteController::class,'downvote'])->name('feedback.downvote');
 });

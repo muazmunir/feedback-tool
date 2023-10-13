@@ -23,6 +23,10 @@
                         <label for="description" class="text-primary fs-4">Description:</label>
                         <p id="description">{{ $feedback->description }}</p>
                     </div>
+                    <div class="form-group">
+                        <button id="upvote-btn" data-feedback-id="{{ $feedback->id }}" class="btn btn-success">Upvote</button>
+                        <button id="downvote-btn" data-feedback-id="{{ $feedback->id }}" class="btn btn-danger">Downvote</button>
+                    </div>
                 </div>
             </div>
             <div class="card mt-3">
@@ -76,9 +80,39 @@
         });
     }
 
-    // Execute the function when the page loads
+
     $(document).ready(function () {
         loadComments();
     });
+    $(document).ready(function () {
+    $('#upvote-btn').click(function () {
+        var feedbackId = $(this).data('feedback-id');
+        vote(feedbackId, 1, 'upvote'); 
+    });
+    $('#downvote-btn').click(function () {
+        var feedbackId = $(this).data('feedback-id');
+        vote(feedbackId, 1, 'downvote'); 
+    });
+
+ 
+});
+
+    function vote(feedbackId, voteValue, vote) {
+        $.ajax({
+            type: 'POST',
+            url: '/feedback/' + feedbackId + '/' + vote,
+            data: {
+                _token: "{{ csrf_token() }}",
+                vote: voteValue
+            },
+            success: function (data) {
+                alert(data.message);
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+
 </script>
 @endpush
