@@ -24,6 +24,16 @@
                         </div>
                     </div>
                 </div>
+                <div class="card mt-3">
+                    <div class="card-body">
+                    <form action="" method="POST">
+                        @csrf
+                        <textarea name="content" placeholder="Add a comment" class="form-control"></textarea>
+                        <button type="submit" class="btn btn-primary mt-1">Submit Comment</button>
+                    </form>
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>

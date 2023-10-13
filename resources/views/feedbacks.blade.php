@@ -10,27 +10,29 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Category</th>
-                                    <th>Vote Count</th>
-                                    <th>Submitted By</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($feedbackItems as $feedback)
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
                                     <tr>
-                                        <td> <a href="{{ route('feedback', $feedback->slug) }}">{{ $feedback->title }}</a> </td>
-                                        <td>{{ $feedback->category }}</td>
-                                        <td>{{ $feedback->vote_count }}</td>
-                                        <td>{{ $feedback->user->name }}</td>
+                                        <th>Title</th>
+                                        <th>Category</th>
+                                        <th>Vote Count</th>
+                                        <th>Submitted By</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                        {!! $feedbackItems->links('pagination::bootstrap-5') !!}
+                                </thead>
+                                <tbody>
+                                    @foreach($feedbackItems as $feedback)
+                                        <tr>
+                                            <td> <a href="{{ route('feedback', $feedback->slug) }}">{{ $feedback->title }}</a> </td>
+                                            <td>{{ $feedback->category }}</td>
+                                            <td>{{ $feedback->vote_count }}</td>
+                                            <td>{{ $feedback->user->name }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                            {!! $feedbackItems->links('pagination::bootstrap-5') !!}
+                        </div>
                     </div>
                 </div>
             </div>
