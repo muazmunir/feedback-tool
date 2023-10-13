@@ -22,6 +22,7 @@ class VoteController extends Controller
         $vote->feedback_id = $feedback->id;
         $vote->vote = 1;
         $vote->save();
+        $feedback->increment('vote_count');
         return response()->json(['message' => 'Upvoted successfully']);
     }
 

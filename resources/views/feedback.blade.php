@@ -24,6 +24,10 @@
                         <p id="description">{{ $feedback->description }}</p>
                     </div>
                     <div class="form-group">
+                        <label for="vote_count" class="text-primary fs-4">Vote:</label>
+                        <p id="vote_count">{{ $feedback->vote_count }}</p>
+                    </div>
+                    <div class="form-group">
                         <button id="upvote-btn" data-feedback-id="{{ $feedback->id }}" class="btn btn-success">Upvote</button>
                         <button id="downvote-btn" data-feedback-id="{{ $feedback->id }}" class="btn btn-danger">Downvote</button>
                     </div>

@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('feedback', function (Blueprint $table) {
-            $table->integer('vote_count')->default(0);
+            $table->integer('vote_count')->default(0)->after('category');
         });
     }
 
