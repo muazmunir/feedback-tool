@@ -32,7 +32,7 @@ class FeedbackController extends Controller
 
     public function feedbacks()
     {
-        $feedbackItems = Feedback::with('user')->paginate(2);
+        $feedbackItems = Feedback::with('user')->paginate(5);
         return view('feedbacks' ,compact('feedbackItems'));
     }
 

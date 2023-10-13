@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FeedbackController;
 use App\Providers\RouteServiceProvider;
@@ -35,4 +36,6 @@ Route::middleware('auth','user-access:user')->group(function () {
     Route::post('/feedback', [FeedbackController::class,'storeFeedback'])->name('feedback.store');
     Route::get('/feedbacks', [FeedbackController::class,'feedbacks'])->name('feedback.all');
     Route::get('/feedbacks/{slug}', [FeedbackController::class,'getfeedback'])->name('feedback');
+    Route::post('/comments', [CommentController::class,'store'])->name('comments.store');
+    Route::get('/comments/{feedback}', [CommentController::class,'index'])->name('comments.index');
 });
