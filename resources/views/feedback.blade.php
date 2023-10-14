@@ -107,7 +107,8 @@
                     vote: voteValue
                 },
                 success: function (data) {
-                    alert(data.message);
+                    Swal.fire('Success', data.message, 'success');
+              
                 },
                 error: function (error) {
                     console.log(error);

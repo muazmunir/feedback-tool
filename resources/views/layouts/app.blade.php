@@ -8,6 +8,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Web</title>
+    @vite(['resources/js/app.js'])
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
