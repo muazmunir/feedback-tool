@@ -39,13 +39,19 @@ Route::middleware('auth','verified','user-access:admin')->prefix('admin')->group
 });
 
 Route::middleware('auth','user-access:user')->group(function () {
-    Route::get('/home', [FeedbackController::class,'showFeedbackForm'])->name('feedback.form');
-    Route::post('/feedback', [FeedbackController::class,'store'])->name('feedback.store');
-    Route::get('/feedbacks', [FeedbackController::class,'feedbacks'])->name('feedback.all');
-    Route::get('/feedbacks/{slug}', [FeedbackController::class,'getfeedback'])->name('feedback');
-    Route::get('/feedback/{feedbackId}/vote-count', [FeedbackController::class,'getVoteCount'])->name('feedback.count');
-    Route::post('/comments', [CommentController::class,'store'])->name('comments.store');
-    Route::get('/comments/{feedback}', [CommentController::class,'index'])->name('comments.index');
-    Route::post('/feedback/{feedback}/upvote', [VoteController::class,'upvote'])->name('feedback.upvote');
-    Route::post('/feedback/{feedback}/downvote', [VoteController::class,'downvote'])->name('feedback.downvote');
+    Route::controller(FeedbackController::class)->name('feedback')->group(function () {
+        Route::get('home','showFeedbackForm')->name('.form');
+        Route::post('feedback', 'store')->name('.store');
+        Route::get('feedbacks', 'feedbacks')->name('.all');
+        Route::get('feedbacks/{slug}', 'getfeedback');
+        Route::get('feedback/{feedbackId}/vote-count','getVoteCount')->name('.count');
+    });
+    Route::controller(CommentController::class)->name('comments')->group(function () {
+        Route::get('comments/{feedback}','index')->name('.index');
+        Route::post('comments', 'store')->name('.store');
+    });
+    Route::controller(VoteController::class)->name('feedback')->group(function () {
+        Route::post('/feedback/{feedback}/upvote','upvote')->name('.upvote');
+        Route::post('/feedback/{feedback}/downvote','downvote')->name('.downvote');
+    });
 });
