@@ -13,7 +13,7 @@ class VoteController extends Controller
                         ->where('feedback_id', $feedback->id)
                         ->first();
         if ($existingVote) {
-            return response()->json(['message' => 'You have already voted on this feedback.']);
+            return response()->json(['message' => 'You have already voted on this feedback.','code' => 403]);
         }
         $vote = new Vote();
         $vote->user_id = $user->id;
@@ -31,7 +31,7 @@ class VoteController extends Controller
                         ->where('feedback_id', $feedback->id)
                         ->first();
         if ($existingVote) {
-            return response()->json(['message' => 'You have already voted on this feedback.']);
+            return response()->json(['message' => 'You have already voted on this feedback.','code' => 403]);
         }
         $vote = new Vote();
         $vote->user_id = $user->id;

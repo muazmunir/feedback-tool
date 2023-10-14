@@ -43,6 +43,7 @@ Route::middleware('auth','user-access:user')->group(function () {
     Route::post('/feedback', [FeedbackController::class,'store'])->name('feedback.store');
     Route::get('/feedbacks', [FeedbackController::class,'feedbacks'])->name('feedback.all');
     Route::get('/feedbacks/{slug}', [FeedbackController::class,'getfeedback'])->name('feedback');
+    Route::get('/feedback/{feedbackId}/vote-count', [FeedbackController::class,'getVoteCount'])->name('feedback.count');
     Route::post('/comments', [CommentController::class,'store'])->name('comments.store');
     Route::get('/comments/{feedback}', [CommentController::class,'index'])->name('comments.index');
     Route::post('/feedback/{feedback}/upvote', [VoteController::class,'upvote'])->name('feedback.upvote');

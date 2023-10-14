@@ -107,12 +107,22 @@
                     vote: voteValue
                 },
                 success: function (data) {
-                    Swal.fire('Success', data.message, 'success');
-              
+                    if(data.code == 403){
+                        Swal.fire('Error', data.message, 'error');
+                    }
+                    else{
+                        Swal.fire('Success', data.message, 'success');
+                        fetchAndDisplayVoteCount(feedbackId);
+                    }
                 },
                 error: function (error) {
                     console.log(error);
                 }
+            });
+        }
+        function fetchAndDisplayVoteCount(feedbackId) {
+            $.get('/feedback/' + feedbackId + '/vote-count', function (data) {
+                $('#vote_count').text(data.vote_count);
             });
         }
     </script>

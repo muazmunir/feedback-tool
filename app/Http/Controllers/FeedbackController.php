@@ -38,4 +38,11 @@ class FeedbackController extends Controller
         }
         return redirect()->route('feedback.all');
     }
+
+    public function getVoteCount($feedbackId)
+    {
+        $Feedback = Feedback::find($feedbackId);
+        return response()->json(['vote_count' => $Feedback->vote_count]);
+    }
+
 }
