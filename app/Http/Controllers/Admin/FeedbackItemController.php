@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Feedback;
-use Yajra\Datatables\Datatables;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
+use Yajra\Datatables\Datatables;
+use App\Models\Feedback;
 
 class FeedbackItemController extends Controller
 {
@@ -32,8 +31,9 @@ class FeedbackItemController extends Controller
             ->toJson();    
     }
 
-    public function destroy(Feedback $Feedback)
+    public function destroy($id)
     {
+        $Feedback = Feedback::find($id);
         $Feedback->delete();
         return new JsonResponse(['message' => 'Feedback deleted successfully']);
     }

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FeedbackRequest;
 use App\Models\Feedback;
-use Illuminate\Http\Request;
 
 class FeedbackController extends Controller
 {
@@ -12,14 +12,8 @@ class FeedbackController extends Controller
         return view('feedback-form');
     }
 
-    public function storeFeedback(Request $request)
+    public function store(FeedbackRequest $request)
     {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'category' => 'required|in:bug,feature,improvement',
-            'description' => 'required|string',
-        ]);
-
         Feedback::create([
             'title' => $request->input('title'),
             'category' => $request->input('category'),

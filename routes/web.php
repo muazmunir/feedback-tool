@@ -40,7 +40,7 @@ Route::middleware('auth','verified','user-access:admin')->prefix('admin')->group
 
 Route::middleware('auth','user-access:user')->group(function () {
     Route::get('/home', [FeedbackController::class,'showFeedbackForm'])->name('feedback.form');
-    Route::post('/feedback', [FeedbackController::class,'storeFeedback'])->name('feedback.store');
+    Route::post('/feedback', [FeedbackController::class,'store'])->name('feedback.store');
     Route::get('/feedbacks', [FeedbackController::class,'feedbacks'])->name('feedback.all');
     Route::get('/feedbacks/{slug}', [FeedbackController::class,'getfeedback'])->name('feedback');
     Route::post('/comments', [CommentController::class,'store'])->name('comments.store');

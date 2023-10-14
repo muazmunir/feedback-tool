@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comment;
-use App\Models\Feedback;
 use Illuminate\Http\Request;
+use App\Models\Feedback;
+use App\Models\Comment;
 
 class CommentController extends Controller
 {
