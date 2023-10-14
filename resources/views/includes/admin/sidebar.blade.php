@@ -9,13 +9,13 @@
             </a>
         </li>
         <li>
-            <a href="jh" class="waves-effect">
+            <a href="{{ route('feedback-items.index') }}" class="waves-effect">
                 <i class="mdi mdi-comment-account"></i>
                 <span>{{ __('Feedback Items') }}</span>
             </a>
         </li>
         <li>
-            <a href="jh" class="waves-effect">
+            <a href="{{ route('users.index') }}" class="waves-effect">
                 <i class="fas fa-user"></i>
                 <span>{{ __('Users') }}</span>
             </a>

@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\FeedbackItemController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\VoteController;
+use App\Http\Controllers\Admin\UserController;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +32,10 @@ Route::get('/admin', function () {
 
 Route::middleware('auth','verified','user-access:admin')->prefix('admin')->group(function () {
     Route::get('dashboard', [DashboardController::class, 'adminIndex'])->name('admin.dashboard');
+    Route::get('/users/dataTable', [UserController::class,'dataTable'])->name('users.dataTable');
+    Route::resource('users', UserController::class);
+    Route::get('/feedback-items/dataTable', [FeedbackItemController::class,'dataTable'])->name('feedback-items.dataTable');
+    Route::resource('feedback-items', FeedbackItemController::class);
 });
 
 Route::middleware('auth','user-access:user')->group(function () {
